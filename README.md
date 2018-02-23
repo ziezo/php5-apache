@@ -1,0 +1,8 @@
+- php5
+- php5-cli
+- php mail() via link to mailserver container
+- mysql-client
+- apache 2
+- sftp
+- vim
+- Debian based
