@@ -1,8 +1,10 @@
 - php5
 - php5-cli
-- php mail() via link to mailserver container
+- php mail() works, see [ziezo/docker-server](https://github.com/ziezo/docker-server) 
+- cron
+- geoip with monthly db update
 - mysql-client
-- apache 2
+- apache2
 - sftp
 - vim
-- Debian based
+- debian jessie

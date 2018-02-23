@@ -79,7 +79,7 @@ RUN apt-get update && apt-get install -y \
         geoip-database-contrib \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#does not work....
+#does not work - can't find php5-geoip ...
 #RUN apt-get update && apt-get install -y \
 #        php5-geoip \
 #    && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -92,5 +92,7 @@ RUN apt-get update \
     && docker-php-ext-enable geoip
 
 
-#start cron background and php:5.6-apache CMD apache2-foreground
-CMD cron && apache2-foreground
+#start cron background and php:5.6-apache ENTRYPOINT
+COPY docker-php-entrypoint-new /usr/local/bin
+ENTRYPOINT ["docker-php-entrypoint-new"]
+CMD ["apache2-foreground"]

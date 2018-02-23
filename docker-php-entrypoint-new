@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#start cron daemon
+echo -n "Starting cron ... "
+cron
+echo "OK"
+
+#execute existing entrypoint - does not work
+exec /usr/local/bin/docker-php-entrypoint "$@"
+
