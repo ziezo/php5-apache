@@ -96,3 +96,8 @@ RUN apt-get update \
 COPY docker-php-entrypoint-new /usr/local/bin
 ENTRYPOINT ["docker-php-entrypoint-new"]
 CMD ["apache2-foreground"]
+
+##########################################################################
+# enable headers module
+##########################################################################
+RUN a2enmod headers
