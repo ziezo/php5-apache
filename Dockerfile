@@ -1,4 +1,4 @@
-#NOTE: php:5.6 is build FROM debian:jessie
+#NOTE: php:5.6 is build FROM debian:stretch (2018-12-10)
 FROM php:5.6-apache
 
 ##########################################################################
@@ -9,7 +9,7 @@ RUN apt-get update \
         libmcrypt-dev \
         libjpeg62-turbo-dev \
         libpcre3-dev \
-        libpng12-dev \
+        libpng-dev \
         libfreetype6-dev \
         libxml2-dev \
         libicu-dev \
@@ -91,13 +91,14 @@ RUN apt-get update \
     && pecl install geoip-1.1.1 \
     && docker-php-ext-enable geoip
 
-
-#start cron background and php:5.6-apache ENTRYPOINT
-COPY docker-php-entrypoint-new /usr/local/bin
-ENTRYPOINT ["docker-php-entrypoint-new"]
-CMD ["apache2-foreground"]
-
 ##########################################################################
 # enable headers module
 ##########################################################################
 RUN a2enmod headers
+
+##########################################################################
+# start cron background and php:5.6-apache ENTRYPOINT
+##########################################################################
+COPY docker-php-entrypoint-new /usr/local/bin
+ENTRYPOINT ["docker-php-entrypoint-new"]
+CMD ["apache2-foreground"]
